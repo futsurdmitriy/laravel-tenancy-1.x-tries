@@ -113,6 +113,14 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-invoker" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-code-coverage" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/tenancy/tenancy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravelcollective/html" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/maximebf/debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/debug" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

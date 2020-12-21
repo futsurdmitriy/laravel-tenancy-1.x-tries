@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Customer;
+use Tenancy\Identification\Contracts\ResolvesTenants;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->resolving(ResolvesTenants::class, function (ResolvesTenants $resolver){
+            $resolver->addModel(Customer::class);
+            return $resolver;
+        });
     }
 
     /**
