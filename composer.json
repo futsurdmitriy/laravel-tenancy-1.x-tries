@@ -15,6 +15,7 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.2",
+        "ramsey/uuid": "^4.0",
         "tenancy/tenancy": "1.*"
     },
     "require-dev": {

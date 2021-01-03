@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -19,6 +20,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
+//        dd(DB::connection()->getConfig());
+
         // get all the customers
         $customers = Customer::all();
 
@@ -66,7 +69,7 @@ class CustomerController extends Controller
             $customer->save();
 
             // redirect
-            Session::flash('message', 'Successfully created customer!');
+            $request->session()->flash('message', 'Successfully created customer!');
             return Redirect::to('customers');
         }
     }
@@ -114,10 +117,16 @@ class CustomerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $customer = Customer::find($id);
+        if ($customer) {
+            $customer->delete();
+            return redirect()->route('customers.index')
+                ->with('success', 'Customer deleted successfully');
+        }
+        return redirect()->back();
     }
 }

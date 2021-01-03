@@ -28,6 +28,7 @@
         <thead>
         <tr>
             <td>ID</td>
+            <td>UUID</td>
             <td>FQDN</td>
             <td>Actions</td>
         </tr>
@@ -36,6 +37,7 @@
         @foreach($customers as $customer => $value)
             <tr>
                 <td>{{ $value->id }}</td>
+                <td>{{ $value->uuid }}</td>
                 <td>{{ $value->fqdn }}</td>
 
                 <!-- we will also add show, edit, and delete buttons -->
@@ -43,6 +45,11 @@
 
                     <!-- delete the customer (uses the destroy method DESTROY /customers/{id} -->
                     <!-- we will add this later since its a little more complicated than the other two buttons -->
+                    {{ Form::open(array('url' => 'customers/' . $value->id, 'class' => 'pull-right')) }}
+                    @csrf
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Delete this customer', array('class' => 'btn btn-warning')) }}
+                    {{ Form::close() }}
 
                     <!-- show the customer (uses the show method found at GET /customers/{id} -->
                     <a class="btn btn-small btn-success" href="{{ URL::to('customers/' . $value->id) }}">Show this customer</a>
